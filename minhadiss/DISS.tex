@@ -1,0 +1,70 @@
+\documentclass[12pt,oneside,nocenter,noupper,bold]{teseir}
+%\documentstyle[12pt,a4,oneside,nocenter,noupper,bold,epsf,multicol,graphicx,here]{teseir}
+%\graphicspath{.}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage[brazil]{babel}% separa silaba
+\usepackage{graphicx}% insercao de figuras
+\usepackage{t1enc}% reconhece acentuacao
+\usepackage{amsmath}%caracteres matematicos
+\usepackage{physics}
+\usepackage{tikz-feynman}
+\usepackage{natbib}
+\bibliographystyle{plain}
+
+\oddsidemargin 0pt
+\evensidemargin 6pt
+\textwidth 460pt
+\textheight 670pt
+  \newcounter{bean}
+  \setlength{\unitlength}{1.5cm}
+\renewcommand{\baselinestretch}{1.5}
+
+%\textwidth 16 cm
+%\textheight 25 cm
+\topmargin -.5 cm
+%\oddsidemargin -.1cm
+
+% Para separar silabas em portugues:
+\language=1
+
+%%%%Para meter um header nas paginas:
+\pagestyle{headings}
+
+%%% aqui os arquivos definitivos
+\includeonly{c,pagbranco,cap1,cap2,cap3,cap4,cap5, ref3}
+
+\begin{document}
+
+\hyphenation{re-pre-sen-ta-da}
+\hyphenation{des-pre-za-das}
+\hyphenation{va-lo-res}
+\hyphenation{i-ma-gi-ná-ria}
+
+\pagenumbering{arabic}
+\include{c}
+%\include{pagbranco}
+%\include{dedica}
+%\include{dedica1}
+%\include{pagbranco}
+%\include{agrad}
+%\include{pagbranco}
+%\include{abstract}
+\tableofcontents
+%\include{pagbranco}
+\listoffigures
+\newpage
+\include{cap1}
+\include{cap2}
+\include{cap3}
+\include{cap4}
+\include{cap5}
+\pagenumbering{arabic}
+%\include{pagbranco}
+%\include{intro2}
+%\include{c5}
+\pagenumbering{roman}
+\include{ref3}
+
+
+\end{document}

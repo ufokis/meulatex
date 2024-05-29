@@ -1,0 +1,387 @@
+\chapter{Nanoponteiras e nano-óptica}
+
+\section{Introdução}
+\paragraph{}
+Neste capítulo inicial descrevemos as principais interações entre campos ópticos e estruturas com dimensões menores que $\lambda$. Basicamente, vamos tratar do comportamento do campo elétrico frente a estruturas com dimensões nanométricas (<100 nm) e como este comportamento pode ser utilizado em técnicas de microscopia.  Fundamentos básicos da nano-óptica serão discutidos, como o confinamento de campos em regime nanométrico, suas consequências e como podemos usar campos evanescentes para melhorar a resolução em técnicas de microscopia de campo-próximo.
+ 
+Processos de produção de \textbf{nano-ponteiras (NP)} - estruturas pontiagudas com dimensão final de ordem nanométrica - serão descritos. Tais estruturas são indispensáveis em técnicas de microscopia de campo-próximo, pois interagem e geram campos altamente confinados que permitem o acesso a informação sobre estruturas menores que o comprimento de onda utilizado. Os diversos tipos de estruturas obtidas na fabricação de NP dielétricas e metálicas serão classificados em: (i) NP de abertura, construídas a partir de fibra óptica podendo ou não ser cobertas por um filme de metal e (ii) NP metálicas, essencialmente construídas a partir de fios.
+
+Contudo o enfoque deste trabalho se volta para a exploração de efeitos ópticos não-lineares em estruturas nanométricas, como a \textbf{geração de segundo harmônico (GSH)}, para isso, estruturas metálicas que amplificam o campo local quando excitadas por um campo externo são tratadas com maior detalhamento.
+
+\section{Limites de confinamento do campo elétrico}
+\paragraph{}
+Antes de seguir a discussão sobre a construção de NP, torna-se pertinente uma breve discussão sobre os limites confinamento do campo elétrico em estruturas nanométricas. Queremos saber qual é o comportamento do campo elétrico quando levado ao confinamento nanométrico, ao irradiarmos uma estrutura com dimensões muito menores que $\lambda$.
+
+\subsection{Imagem de uma fonte puntiforme (critério de Rayleigh)}
+\paragraph{}
+Considerando uma fonte eletromagnética infinitamente pequena, em uma dimensão, representada pela sua emitância $f(x)=\delta(x-x_0)$. Podemos analisar o campo emitido por esta fonte através da representação angular \cite{principle}, muito utilizada para representar e tratar campos ópticos, que para este caso se reduz a transformada de Fourier da emitância:
+\begin{eqnarray}
+   f(x)=\int^{+\infty}_{-\infty}f(x)e^{ikx}dx \nonumber \\
+	=\int^{+\infty}_{-\infty}\delta(x-x_0)e^{ikx}dx \nonumber \\
+	=e^{ikx_0}.
+\label{eqfonte}
+\end{eqnarray}
+No entanto, se quisermos observar esta fonte com uma objetiva comum devemos considerar o ângulo de aceitação que filtra parte das componentes espectrais emitidas pela fonte. Para uma objetiva, representada na fig. \ref{fig:objetiva} (a), o ângulo de aceitação $\theta$ limita as componentes entre o intervalo $[-k_{max}=-\frac{\omega}{c}\sin{\theta};k_{max}=\frac{\omega}{c}\sin{\theta}]$, onde $k$ é o módulo do vetor de onda sendo $k=\frac{\omega}{c}=\frac{2\pi}{\lambda}$ considerando o índice de refração $n=1$. Assim, tomando a transformada inversa da $f(k)$ temos,
+\begin{eqnarray}
+f'(x)=\frac{1}{2\pi}\int^{+k_{max}}_{-k_{max}}f(k)e^{-ikx}dk \nonumber \\
+=\frac{1}{2\pi}\int^{+k_{max}}_{-k_{max}}e^{ikx_0}e^{-ikx}dk \nonumber \\
+=\frac{1}{2\pi}\left[\frac{1}{i(x-x_0)}e^{-ik(x-x_0)}\right]^{+k_{max}}_{-k_{max}} \nonumber \\
+=\frac{1}{2\pi i(x-x_0)}\left[e^{-ik_{max}(x-x_0)}-e^{ik_{max}(x-x_0)}\right] \nonumber \\
+=\frac{\sin{\left[k_{max}(x-x_0)\right]}}{\pi(x-x_0)} \nonumber \\
+=\frac{\sin{\left[\frac{\omega}{c}\sin{\theta}(x-x_0)\right]}}{\pi(x-x_0)} \nonumber \\
+=\frac{\sin{\left[\frac{2\pi}{\lambda}\sin{\theta}\Delta x\right]}}{\pi\Delta x}
+\label{sinc}
+\end{eqnarray}
+
+A f'(x) representa a imagem da fonte pontual detectada por uma objetiva \cite{yoshie}, como a de uma abertura infinitamente pequena representada na fig. \ref{fig:objetiva} (b).
+
+\begin{figure}[h]
+\centering
+\includegraphics{figuras/objetiva.eps}
+\caption{(a) ângulo de abertura de uma objetiva comum imersa em um meio de índice de refração n; (b) distribuição de intensidade de uma abertura irradiada por um campo eletromagnético; (c) definição de resolução máxima entre duas fontes eletromagnéticas. \cite{principle}}
+\label{fig:objetiva}
+\end{figure} 
+
+A detecção feita diretamente com uma objetiva, como proposta acima, é um tipo de configuração comumente denominada de detecção em campo-distante (far-field). Para tanto, definimos a máxima resolução espacial de um detector como a menor distância entre duas fontes onde o máximo de uma função coincide com o mínimo da outra e vice-versa [fig.\ref{fig:objetiva} (a)]. Em outras palavras, um detector é capaz de resolver dois pontos separados pela distância definida pelo primeiro mínimo da função (\ref{sinc}), portanto, 
+\begin{eqnarray}
+    \Delta x=\frac{1}{2\sin{\theta}}
+\label{delx}
+\end{eqnarray}
+representa a resolução máxima de uma objetiva com ângulo de abertura $\theta$. A expressão (\ref{delx}) limita a resolução óptica em $\Delta x\geq\frac{\lambda}{2}$ (critério de Rayleigh), sem violar o princípio da incerteza \cite{yoshie}, para detecção em campo-distante.
+Porém outras configurações são possiveis, combinações de detecção e iluminação em campo-distante e campo-próximo \cite{principle}. A configuração em campo-próximo (near-field) consiste em explorar efeitos próximos a estruturas nanométricas irradiadas por um campo eletromagnético. Tais estruturas quando excitadas por um campo externo, geram efeitos de amplificação do campo local \cite{principle,novotny,zayats,ropers,bouhelier,nature}, que serão discutidos detalhadamente no decorrer deste trabalho. Estes efeitos tem como consequência fundamental a geração de campos evanescentes, não-propagantes, na vizinhança próxima da estrutura nanométrica e são esses campos que permitem o aumento da resolução - através de técnicas de espectroscopia de campo-próximo - além do limite de difração. Algumas das configuração possíveis estão ilustradas na fig.\ref{fig:nearfield}.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.8]{figuras/nearfield.eps}
+\caption{Possíveis configurações para iluminação em campo-distante e campo-próximo. Para explorar efeitos de campo-próximo são utilizadas nanoponteiras com e sem abertura. \cite{principle}}
+\label{fig:nearfield}
+\end{figure} 
+
+\subsection{Princípio de incerteza e confinamento de um fóton}
+Segundo princípio da incerteza de Heisenberg o produto da componente de incerteza do momentum ($\Delta p_x$) em uma dada direção pela incerteza na posição ($\Delta x$), na mesma direção, de uma partícula microscópica não pode ser menor que $\frac{\hbar}{2}$.
+\begin{eqnarray}
+\Delta p_x.\Delta x \geq \frac{\hbar}{2}
+\end{eqnarray}
+Um fóton propagando no espaço livre segue relação de dispersão $\hbar \omega=c.p=c.\hbar k$, onde, $k=\sqrt{k_x^2+k_y^2+k_z^2}$ é o módulo vetor de onda $\vec{k}$ que representa o fóton e $\omega$ é a sua frequência angular \cite{principle}. Assim para um fóton temos a seguinte relação:
+\begin{eqnarray}
+\Delta \hbar k_x.\Delta x \geq \frac{\hbar}{2}
+\end{eqnarray}
+ao longo da direção x. Podemos então reescrever a condição de confinamento para um fóton em uma determinada direção como
+\begin{eqnarray}
+\Delta x \geq \frac{1}{2\Delta k_x}
+\label{inversa}
+\end{eqnarray}
+A interpretação direta dessa relação revela que o confinamento espacial do campo elétrico em uma dada direção é inversamente proporcional a variação da componente do vetor de onda ($\Delta k_x$) nesta mesma direção. Contudo, a variação da componente de onda para um campo propagante tem valor máximo no espaço livre dado por $k=\frac{2\pi}{\lambda}$, com isso temos para o confinamento do campo elétrico, considerando um campo com uma única componente do vetor de onda $k=k_x=\frac{2\pi}{\lambda}$,
+\begin{eqnarray}
+\Delta x \geq \frac{\lambda}{4\pi}
+\label{difracao}
+\end{eqnarray}
+
+\section{Representação Angular de Campos Ópticos}
+\label{angular}
+\paragraph{}
+No entanto, matematicamente podemos aumentar uma das componentes do vetor de onda sem deixar de satisfazer o limite superior para $k$, basta admitirmos que uma das componentes torne-se puramente imaginária. Consideramos um campo propagando no espaço livre ao longo da direção $z$, para um meio com $n=1$, temos
+\begin{eqnarray}
+k=\sqrt{k_x^2+k_y^2+k_z^2}=\frac{2\pi}{\lambda} \nonumber \\
+k_x^2+k_y^2=k^2-k_z^2
+\label{kuadrado}
+\end{eqnarray}
+Assim, se admitirmos a componente $k_z$ puramente imaginária ($k_z=i|k_z| $), temos a partir da relação (\ref{kuadrado})
+\begin{eqnarray}
+k_x^2+k_y^2=k^2+|k_z|^2
+\label{maiorquek}
+\end{eqnarray}
+ou seja, $k_x^2+k_y^2>k^2$, ou ainda se considerarmos um campo polarizado na direção $x$, ou seja $k_y=0$, temos 	
+\begin{eqnarray}
+k_x>k=\frac{2\pi}{\lambda}
+\label{kxmaiorquek}
+\end{eqnarray}
+que representa um confinamento para o campo maior que o expresso na relação (\ref{difracao}), uma vez que $\Delta x$ é inversamente proporcional a variação de $k_x$ (eq. \ref{inversa}). 
+
+A princípio, podemos ter um limite indefinido para o valor de $\Delta k_x$, e consequentemente para $\Delta x$, uma vez que o princípio da incerteza não limita o confinamento do campo, mas apenas garante a relação inversa entre $\Delta x$ e $\Delta k_x$. Em outras palavras, se tivermos um confinamento extremo na direção $x$ perderemos informação sobre o momento $p_x$  na mesma direção. 
+
+Contudo o preço pago por ter um confinamento além do limite de difração nas direções perpendiculares à propagação é ter uma componente do vetor de onda imaginária, no caso $k_z$, o que implica em um campo não-propagante, ou evanescente, na direção de propagação. Por definição um campo evanescente é aquele que se extingue rapidamente, comumente como uma função exponencial. Para demonstrar a consequência de termos uma componente do vetor de onda imaginária, vamos fazer uso da representação angular para campos ópticos \cite{principle,yoshie}, muito utilizada para descrever feixes e regiões focalizadas. Assim, representamos um campo arbitrário como uma superposição de ondas planas (e veremos que também ondas evanescentes contribuem) com amplitudes e direções de propagação variadas.
+
+Supomos que o campo elétrico $\vec{E}(\vec{r})$, com $\vec{r}=(x,y,z)$, é conhecido em todo o espaço. Por exemplo, $\vec{E}(\vec{r})$ pode ser solução de um problema de espalhamento, como ilustrado na fig. \ref{fig:scatt}, onde o campo considerado é a soma do campo incidente $\vec{E}_{inc}$ com o campo espalhado $\vec{E}_{scatt}$, $\vec{E}=\vec{E}_{inc}+\vec{E}_{scatt}$.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.5]{figuras/scatt.eps}
+\caption{Figura que ilustra a representação angular de campos ópticos. O campo $\bf E=E_{inc}+E_{scatt}$ é calculado sobre um plano perpendicular ao eixo considerado $z=const.$ \cite{principle}}
+\label{fig:scatt}
+\end{figure} 
+Na representação angular, definimos um eixo arbitrário z e sobre um plano perpendicular com $z=const.$, consideramos a transformada de Fourier do campo $\vec{E}(\vec{r})$ em duas dimensões,
+\begin{eqnarray}
+\widehat{E}(k_x,k_y;z)=\frac{1}{4\pi^2}\int\int_{-\infty}^{+\infty}\vec{E}(x,y,z)\,e^{-i[k_x x + k_y y]}\,dx\, dy
+\label{transf} 
+\end{eqnarray}
+e a transformada inversa,
+\begin{eqnarray}
+\vec{E}(x,y,z)=\int\int_{-\infty}^{+\infty}\widehat{E}(k_x,k_y;z)\,e^{i[k_x x + k_y y]}\,dk_x\, dk_y
+\label{transfinversa} 
+\end{eqnarray}
+onde ambas expressões definem independentemente as três componentes de cada vetor; $\widehat{E}=(\widehat{E_x},\widehat{E_y},\widehat{E_z})$ e $\vec{E}=(\vec{E_x},\vec{E_y},\vec{E_z})$.Supondo que ao logo do plano considerado o meio seja homogêneo, isotrópico, linear e livre de fontes. Com essas considerações, um campo óptico com uma dependência temporal tipo $e^{i\omega t}$ satisfaz a equação de Helmholtz,
+\begin{eqnarray}
+(\nabla^2+k^2)\vec{E}(\vec{r},t)=0
+\label{helmholtz}
+\end{eqnarray} 
+onde,
+\begin{eqnarray}
+\vec{E}(\vec{r},t)=Re\left\{\vec{E}(x,y,z)\,e^{i\omega t}\right\}
+\label{real}
+\end{eqnarray}
+$k=(\frac{\omega}{c})n$, e $n=\sqrt{\mu\epsilon}$ índice de refração do meio. Substituindo a eq. (\ref{real}) em (\ref{helmholtz}) temos
+\begin{eqnarray}
+\int\int_{-\infty}^{+\infty}\left[(-k_x^2-k_y^2+k^2)\,\widehat{E}(k_x,k_y;z)+\frac{\partial^2\widehat{E}(k_x,k_y;z)}{\partial z^2} \right] e^{i[k_x\,x\,+\,k_y\,y]} \, dk_x \, dk_y = 0
+\label{inthelmholtz}
+\end{eqnarray}
+Assim, partindo da expressão entre colchetes da eq. (\ref{inthelmholtz}), temos
+\begin{eqnarray}
+\widehat{E}(k_x,k_y;z)=\widehat{E}(k_x,k_y;0) \left[ \pm i \sqrt{-k_x^2-k_y^2+k^2} z \right]  \nonumber \\
+=\widehat{E}(k_x,k_y;0)e^{\pm\,i\,k_z\,z}
+\label{propagador}
+\end{eqnarray}
+sendo, $k=\sqrt{k_x^2+k_y^2+k_z^2}$. O sinal $\pm$ especifica que devemos considerar a superposição de duas soluções; o sinal positivo representa a onda propagante no espaço onde $z>0$ enquanto o sinal negativo representa a propagação no espaço onde $z<0$. Vemos na expressão (\ref{propagador}) que a solução espectral sobre um plano com $z=const$. é o produto da solução em  $z=0$ com um fator $e^{\pm i k_z z}$, o qual é denominado propagador no espaço recíproco dentro da representação angular. Podemos tomar a tranformada inversa do campo no espaço recíproco $\widehat{E}(k_x,k_y;z)$ para obter a seguinte expressão para o campo elétrico:
+\begin{eqnarray}
+\vec{E}(x,y,z)=\int \int_{- \infty}^{+ \infty} \widehat{E}(k_x,k_y;0) e^{i[k_x\,x\,+\,k_y\,y\,\pm\,k_z z]}\,dk_x\,dk_y
+\label{campoeletrico}
+\end{eqnarray}
+A expressão acima demonstra a dependência de $\vec{E}(x,y,z)$ na direção de propagação com $e^{\pm\,i\,k_z\,z}$. Essa solução representa uma onda propagante para $k_z$ real, porém se admitirmos, como considerado anteriormente, que $k_z$ é uma componente puramente imaginária teremos uma onda que decresce exponencialmente com $e^{-\,|k_z|\,|z|}$, o que define uma onda evanescente na direção de propagação. De uma maneira geral teremos ondas planas quando as componentes transversais $k_x^2+k_y^2 \leq k^2$ e ondas evanescentes para $k_x^2+k_y^2>k^2$ (ver eq. \ref{kuadrado} e \ref{maiorquek}).
+\begin{eqnarray}
+ondas \; planas:\;\;\;\;\, e^{i\,[k_x\,x\,+\,k_y\,y]}\,e^{\pm\,i\,k_z\,z}\;\;\;\;\;,\;\;\;k_x^2+k_y^2 \leq k^2 \nonumber \\
+ondas \; evanescentes:\;\; e^{i\,[k_x\,x\,+\,k_y\,y]}\,e^{-|k_z|\,|z|}\;\;\;\;\;,\;\;\;k_x^2+k_y^2>k^2
+\end{eqnarray}
+Em muitas teorias de campo-distante as componentes evanescentes são desprezadas devido ao decaimento exponencial. 
+
+\section{Campos Evanescentes e Campos Propagantes}
+\label{camposevanescente}
+\paragraph{}
+As distinções entre detecção de campo-distante e campo-próximo se resumem na banda espectral aproveitada nas diferentes técnicas. Em campo-distante as componentes desprezadas $k>k_{max}=\frac{2\pi}{\lambda}$ limitam a resolução óptica. Por outro lado, quando exploramos tais componetes que geram o campo evanescente na direção de propagação podemos ampliar o limite de resolução (eqs. \ref{inversa} e \ref{kxmaiorquek}).   
+
+O confinamento do campo elétrico transversal à direção de propagação pode ser utilizado para ampliar a resolução óptica em técnicas de microscopia \cite{novotny,ropers,nature}. No entanto, como visto anteriormente, o confinamento tranversal do campo resulta no decaimento exponencial na direção de propagação. Com isso, é necessário explorar fenômenos ópticos que permitam propagar e detectar a informação do campo evenescente.
+
+O fenômeno que permite propagar a informação e detectá-la é o mesmo que ocorre na "reflexão interna total frustrada"  \cite{principle}. Quando um feixe incide sobre uma interface, de um meio com índice de refração maior em direção à um meio com índice menor (n > n'), acima do ângulo crítico $\theta_c$ um campo evenescente é gerado além da interface (fig. \ref{fig:reflexao}). Esse fenômeno se explica pela continuidade do campo elétrico e pela inomogeneidade entre os meios de diferentes índices de refração. O ângulo crítico é determinado diretamente através da lei de Snell, $n\sin{\theta}=n'\sin{\theta '}$  \cite{jackson}, percebemos que o ângulo de refração é limitado, $\theta ' \leq \frac{\pi}{2}$, assim o ângulo crítico é dado para $\theta ' = \frac{\pi}{2}$,
+\begin{eqnarray}
+\theta_c=sin^{-1}\left({\frac{n'}{n}}\right)
+\label{angcritico}
+\end{eqnarray}
+\begin{figure}[h]
+\centering
+\includegraphics[scale=1.2]{figuras/reflexao.eps}
+\caption{(a) Reflexão sobre a interface entre dois meios de índices de refração n > n' (b) Esquema que ilustra a reflexão interna total, que torna o campo evanescente que segue a interface interna do primeiro prisma em propagante no segundo prisma.  \cite{principle}}
+\label{fig:reflexao}
+\end{figure}
+Se incidirmos em um ângulo onde $\theta > \theta_c$ teremos a reflexão total do feixe incidente sem a presença de uma campo propagante no meio $n'$. No entanto, a única maneira de ainda satisfazer a lei de Snell é considerar $\sin{\theta '} > 1$, o que significaria que $\theta '$ é um ângulo complexo e que $\cos{\theta '}$ é puramemente imaginário,
+\begin{eqnarray}
+\cos{\theta '}=\sqrt{1-\sin^2{\theta '}} \nonumber \\
+\cos{\theta '}=i\,\sqrt{\left(\frac{\sin{\theta}}{sin{\theta_c}}\right)^2-1}
+\end{eqnarray}
+Com isso, a componente na direção $z$ do vetor de onda que descreve o feixe refratado $k_z=k\,\cos{\theta '},$
+\begin{eqnarray}
+k_z=i\,k\,\sqrt{\left(\frac{\sin{\theta}}{sin{\theta_c}}\right)^2-1}
+\label{kz_reflet}
+\end{eqnarray}
+é uma componente puramente imaginária o que resulta, como já visto acima, em um campo evanescente nessa direção. Com um raciocínio análogo para a componente $k_x$ percebemos que o campo propaga ao longo da direção paralela a interface. O fluxo de energia através da interface durante a reflexão interna total resulta em um pequeno deslocamento do feixe refletido, o que denominamos de efeito Goos-Hänchen \cite{jackson}.
+
+Ao aproximarmos uma nova interface a uma distância $d$ menor que o comprimento de penetração do campo evanescente no meio $n'$, temos que parte da energia do campo evanescente é convertida em um campo propagante no terceiro meio. Para tanto, é necessário que o índice de refração do terceiro meio seja maior que o segundo, ou igual ao meio de incidência como exemplificado na fig. \ref{fig:reflexao} (b), onde dois prismas são utilizados para demonstrar o princípio. O fenômono óptico de reflexão interna total frustrada é análogo ao tunelamento através de uma barreira de potencial em mecânica quântica. Neste caso, a barreira é representada pelo meio intermediário entre os dois prismas e depende da distância $d$ entre eles.
+
+Contudo, discutimos como um campo evenescente pode ser gerado e mostramos um exemplo de como podemos interargir com o campo-próximo e torná-lo propagante, possibilitando assim a sua detecção. Nos capítulos que segem, vamos discutir como isso se aplica às estruturas nanométricas. Vamos ver como explorar as assimetrias e inomogeneidades em escala menor que o comprimento de onda para confinar o campo elétrico e utilizar as interações entre essas estruturas para recuperar a informação de campos evanescentes.
+
+\section{Nanoponteiras}
+\paragraph{}
+Como pudemos ver, técnicas de microscopia óptica podem ter a resolução espacial ampliada explorando o confinamento dos campos, fazendo propagar a informação do campo-próximo evanescente. Para tanto é necessário criar condições para tal confinamento, através de inomogeneidades  do meio. Nanoponteiras representam um papel fundamental para esse tipo de microscopia e podem atuar tanto como geradoras do campo evanescente como ponteiras de prova ao fazer propagar o campo gerado pela amostra. Ao propagar através de uma NP o campo proveniente de uma fonte óptica encontra uma condição de assimetria espacial e de inomogeneidade de índices de refração. No caso de NP metálicas o campo gerado na extremidade é acrescentado por efeitos de amplificação \cite{bouhelier,picardi,nature}.
+
+ Como visto no cap. \ref{angular}, o campo elétrico pode ser confinado indefinidamente, porém em termos práticos este confinamento é limitado pela capacidade de construir estruturas nanométricas caa vez menores. A relação entre a resolução da \textbf{microscopia óptica de campo-próximo (MOCP)} e o tamanho final da NP é direta. Atualmente, ponteiras com até um único átomo na extremidade são construídas utilizando técnicas de focalização de íons ($\it{focused\, ion\, bean - FIB}$), no entanto, estas técnicas necessitam de um equipamento sofisticado e indisponível a maioria dos pesquisadores.
+
+As técnicas que serão discutidas neste trabalho visam a construção de NP com estrutura final muito menor que o comprimento de onda $\lambda$ utilizado como fonte em técnicas de microscopia óptica, em geral dimensões menores que $ 100\,\, nm $. Além disso, técnicas de desbaste serão enfatizadas, por serem de fácil reprodução e largamente exploradas na literatura \cite{picardi,boyle,klein,muller}. A fim de focar o tema deste trabalho vamos nos deter a estruturas finais na forma de cone, ainda que outras estruturas veem se mostrado mais eficientes tais como nanoantenas ou moléculas únicas presas à extremidade de uma NP \cite{principle,novotny}. Quanto a natureza das NP vamos classificá-las em dielétricas e metálicas e quanto a estrutura em NP de abertura ou cônicas.
+
+\section{NP dielétricas}
+\paragraph*{}
+Ponteiras dielétricas podem ser obtidas a partir de fibras ópticas, através de moldagem polimérica ou por técnicas de micro fabricação em silicone \cite{principle}. As NP produzidas a partir de fibras tem uma grande vantagem em relação as demais, pois podem ser iluminadas através do próprio núcleo ou utilizar o mesmo para propagar um campo evanescente próximo à sua extremidade. Como as demais ponteiras dielétricas são raramente utilizadas, trataremos neste trabalho NP dielétricas como sendo as construídas a partir de fibra óptica.
+
+NP dielétricas desempenham um papel característico para MOCP, e são utilizadas principalmente quando desejamos obter apenas o sinal gerado pela superfície analisada, uma vez que, o campo gerado pelas NP metálicas - que por efeitos próprios da mobilidade eletrônica - contribuem intensamente com campo local (NP + amostra). Por exemplo, para MOCP com geração de segundo harmônico, NP dielétricas podem ser diretamente aplicadas quando se deseja obter a resposta não-linear somente da amostras iluminada, uma vez que a presença de metal na superfície da NP também perturbaria a não-linearidade do meio \cite{zayats,malkmus}. 
+
+Basicamente, pode-se obter NP dielétricas atrávés de dois processos distintos: desbaste químico ou por aquecimento local e subsequente esticamento. 
+
+\subsection{Desbaste químico}
+\paragraph*{}
+
+Por desbaste químico duas técnicas diferenciam-se sutilmente, o \textbf{método de Turner} e o \textbf{desbaste tubular} \cite{principle}.
+
+O método de Turner, consiste em emergir um pedaço de fibra óptica em uma solução de 40\%  de ácido fluorídrico (HF). Sobre a solução de HF acrescenta-se uma estreita camada de um solvente orgânico imiscível ao ácido. Esta camada tem como finalidade controlar o ângulo de abertura do cone que forma a ponteira e também prevenir contra os gases tóxicos resultantes da reação. Neste método, a capa plástica que protege a fibra é retirada e a parte descoberta inserida na solução. A altura do menisco, formado pelo solvente orgânico em torno da fibra, é função do diâmetro submerso. com o decorrer do desbaste químico na parte submersa o menisco orgânico vai reduzindo o diâmetro do contato entre fibra e HF. Como limite, o diâmetro torna-se zero e teoricamente o desbaste é auto interrompido (fig. \ref{fig:desbaste_quimico} (a)). No entanto este método tem seus contrapontos, o desbaste não é realmente auto interrompido, por difusão algumas moléculas HF permanecem reagindo com a extremidade da ponteira produzindo uma ponta arredondada (menos aguda), criando a necessidade de se acompanhar e interromper mecanicamente a reação. Outro contraponto irreversível é a rugosidade resultante ao longo da superfície da NP que deve-se ao movimento do menisco não ser contínuo e suave mas sim de ser em saltos entre uma posição estável e outra. Essa rugosidade resulta em uma superfície opaca indesejável na construção de NP de abertura.
+
+O outro método é conhecido como desbaste tubular justamente por não remover a proteção plástica que envolve a fibra. A maioria das proteções que protegem as fibras são inertes ao HF, assim a reação fica limitada ao tubo formado pelo plástico (fig. \ref{fig:desbaste_quimico} (b)). Neste caso, a camada de solvente orgânico tem como finalidade evitar as emissões gasosas tóxicas, e o processo deve ser necessariamente acompanhado e interrompido. Como resultado, temos uma superfície muito menos rugosa para o segundo método, como mostra as imagens da fig. \ref{fig:desbaste_quimico} (c).
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.4]{figuras/dieletrica.eps}
+\caption{Evolução temporal do (a) Método de Turner e do (b) Desbaste Tubular. Imagens feitas por um microscópio óptico convencional, (c) a esquerda NP dielétrica produzida pelo método de Turner e à direita pelo método do desbaste tubular.  \cite{principle}}
+\label{fig:desbaste_quimico}
+\end{figure} 
+
+\subsection{Aquecimento e esticamento}
+\paragraph*{}
+
+Existem outros processos para produzir NP dielétricas, entre eles destacamos o processo de aquecimento e esticamento. Inicialmente o mesmo foi desenvolvido para fabricação de micro pipetas na Alemanha (Max Planck Institute) nos anos 70. Em 1991 Erwin Neher e Bert Sakmann ganharam o prêmio Nobel de medicina pela descoberta. A técnica para micro pipetas foi desenvolvida utilizando capilares de quartzo aquecendo uma pequena região do capilar e puxando as extremidades afim de romper na região aquecida. Posteriormente, a técnica foi adaptada para produzir NP dielétricas, utilizando ao invés de capilares fibras ópticas. No entanto, esta técnica envolve diversos parâmetros como a área da região aquecida, a viscosidade desejada durante o processo de esticamento, a velocidade do esticamento e a meneira que é feito o aquecimento. No caso das NP dielétricas é desejável um cone com maior ângulo de abertura e para tanto a região aquecida deve ser a menor possível. Geralmente a região é aquecida focando um feixe de laser de $CO_2$ com $\lambda = 1060 \,\,nm$, comprimento de onda que é eficientemente absorvido pelo vidro. Comercialmente existem equipamentos de controle para produção de micro pipetas que podem ser adaptados para controle de parâmetros na produção de NP dielétricas \cite{principle}. 
+
+\section{NP de abertura}
+\paragraph*{}
+Contudo, a principal função das NP dielétricas é servir de base para a construção de \textbf{NP de abertura}, estas muito utilizadas em MOCP. NP de abertura são construídas através de um processo de recobrimento metálico sobre a superfície de uma NP dielétrica. Como resultado temos um cone metálico com núcleo dielétrico e uma abertura menor que o comprimento de onda. Uma técnica direta para a realização desse recobrimento é através da deposição por vapor de alumínio, imprimindo um movimento de rotação sobre o próprio eixo e mantendo-o em um determinado ângulo em relação a direção de deposição (fig. \ref{fig:abertura} (b)). 
+
+NP de abertura podem ser iluminadas através do próprio núcleo ou ainda serem utilizadas para tornar propagante um campo-próximo através do seu núcleo. No primeiro caso, o ângulo do cone e a relação entre os índices de refração de metal e do dielétrico definem condições diferente para os diferentes modos propagantes dentro da ponteira. Quanto maior o ângulo de abertura do cone maior a transmissão da NP de abertura. Para a maioria dos modos o decaimento exponencial, consequente do confinamento espacial (vide cap.\ref{camposevanescente}), se extingue antes da abertura definida no ápice da NP (fig.\ref{fig:abertura} (a)). Os modos que permanecem até a abertura contribuem para o campo evenescente formado no meio externo, o qual permite a resolução além do limite de difração.
+
+No entanto, o confinamento do campo na extremidade da NP aumenta muito a densidade de energia local, resultando em um aquecimento podendo destruir a estrutura, logo, a intensidade de luz incidente deve ser limitada. Aproximadamente $\frac{1}{3}$ da energia incidente é refletida sendo o restante dissipado na interface com o metal. Também, as NP de abertura geram uma amplificação do campo local superior às NP dielétricas, resultante das interações do campo elétrico com os elétrons livres da cobertura metálica podendo até mesmo gerar efeitos ópticos não-lineares como a GSH. Contudo, devido a finalidade de se obter uma abertura com o recobrimento metálico, temos uma limitação em relação a estrutura final da NP, não podendo ser menor que algumas dezenas de nanometros.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.7]{figuras/ponteira_abertura.eps}
+\caption{(a) NP de abertura e os modos internos; (b) recobrimento metálico com vapor de aluminio, o ângulo de incidência garante a abertura metálica no ápice da NP.  \cite{principle}}
+\label{fig:abertura}
+\end{figure} 
+
+\section{NP metálicas}
+\paragraph*{}
+NP construídas diretamente a partir de fios metálicos são largamente exploradas por pesquisadores em técnicas de MOCP. Esta relevância é claramente entendida quando percebemos que estruturas metálicas menores que $\lambda$ ao  serem excitadas por uma campo externo podem conduzir a efeitos que amplificam o campo local, de maneira mais eficiente comparada a estruturas dielétricas. Tal eficiência deve-se a efeitos exclusivos das interações entre o campo externo e as cargas livres do condutor, aliado a quebra de simetria espacial e ao extremo confinamenro do campo elétrico. Em comparação com as NP de abertura, as NP metálicas carregam a característica de obter uma estrutura final menor podendo chegar a um único átomo na sua extremidade. 
+
+A estrutura geométrica tratada neste trabalho se contém em discutir formas cônicas para NP metálicas, sendo atualmente possível produzir outras estruturas - por vezes mais eficientes na amplificação do campo - através de técnicas mais elaboradas. Quanto ao limite inferior do diâmetro obtido, discutiremos técnicas de construção essencialmente baseadas no desbaste eletroquímico de metais, as quais, não ultrapassam dezenas de nanometros como limite inferior. Atualmente utilizando um feixe de íons focalizado podemos construir estruturas que excedem esse limite, porém esta técnica exigem uma estrutura elaborada indisponível a maioria dos pesquisadores.
+
+\subsection{Amplificação do campo-próximo}
+\paragraph*{}
+
+Efeitos de amplificação o campo-próximo ocorrem eficientemente em NP metálicas resultante da interação entre campo elétrico e as cargas do condutor. O efeito esperado mais direto é o \textbf{efeito de pontas}. Segue da eletrostática, que as cargas livres de um condutor se localizam em sua superfície, também a relação $ \nabla . \vec{E} = 0 $ deve se satisfeita para o interior do condutor, com isso temos que em descontinuidades de superfície (como a extremidade de uma NP) deve  ocorrer um aumento na densidade de cargas superficiais, a fim de compensar a divergência do campo interno, resultando em um campo local mais intenso \cite{jackson}.
+
+Outro importante efeito que que resultante da interação entre o campo eletromagnético e as cargas do condutor é o \textbf{plasmon de superfície}. As cargas livres na superfície sofrem oscilações de densidade ao serem perturbadas pelo campo eletromagnético. Essas oscilações de superfície resultam em uma amplificação de campo espacialmente confinado próximo a superfície do metal. Podemos tratar estas interações que resultam em plasmon de superfície como (i) a perturbação causada pelo deslocamento coletivo dos elétrons livres ou, se o fóton incidente tiver energia suficiente, (ii) a promoção de elétrons ligados para a banda de condução.
+
+No primeiro caso, a oscilações podem ser descritas pelo modelo de Drude-Sommerfeld para um gás de elétrons livres. Neste modelo consideramos um deslocamento $\vec{r}$ de um elétrons, perturbado por um campo externo, associado a um momento de dipolo 
+\begin{eqnarray}
+ \vec{\mu}=e\vec{r}
+\label{momento_dipolo}
+\end{eqnarray}
+onde $e$ é a carga do elétron. O efeito conjunto de todos momentos de dipolos resulta na polarização macroscópica do meio $\vec{P}=n\vec{\mu}$, onde $n$ é a densidades de elétrons. A partir das equações de Maxwell da eletrodinâmica, temos
+\begin{eqnarray}
+ \vec{P}(\omega) = \epsilon_{0} \chi_{e}(\omega)\vec{E}(\omega)
+\label{pol_linear}
+\end{eqnarray}
+onde $\chi_e$ é a susceptibilidade elétrica do condutor e $\omega$ a frequência do campo externo. Utilizandos as relações constitutivas,  que descrevem o comportamento da matéria sob a influência de campos eletromagnéticos completando as equações de Maxwell, chegamos a seguinte expressão para a constante dielétrica dependente da frequência $\omega$
+\begin{eqnarray}
+ \epsilon(\omega)=1+\chi_e(\omega).
+\label{cte_dieletrica}
+\end{eqnarray}
+Podemos então, resolver a equação de movimento para o elétron livre
+\begin{eqnarray}
+ m_e \frac{\partial^2\vec{r}}{\partial t^2} + m_e\, \Gamma \, \frac{\partial\vec{r}}{\partial t} = e \, \vec{E}_0 \, e^{-i \omega t}
+\label{eq_mov}
+\end{eqnarray}
+onde $m_e$ é a massa do elétron e $\Gamma = \frac{v_f}{l}$ é o termo de viscosidade sendo $v_f$ a velocidade de Fermi e $l$ o livre caminho médio do elétron. Notamos que na equação anterior não existe nenhum termo restaurador uma vez que consideramos um elétron livre. Utilizando o ``$\it{ansatz}$'' $\vec{r}(t)=\vec{r}_0 \, e^{-i \omega t}$ para resolver a eq. \ref{eq_mov}, podemos através da eq. \ref{momento_dipolo}, obter a polarização macroscópica do meio e consequentemente a constante dielétrica (eq. \ref{cte_dieletrica}). Assim podemos obter \cite{principle,jackson},
+\begin{eqnarray}
+ \epsilon_{Drude}(\omega)= 1-\frac{\omega_p^2}{\omega^2+i\Gamma\omega}
+\label{drude}
+\end{eqnarray}
+ou ainda separando a expressão \ref{drude} em parte real e imaginária, temos
+\begin{eqnarray}
+  \epsilon_{Drude}(\omega)= 1-\frac{\omega_p^2}{\omega^2+\Gamma^2}+i\frac{\Gamma\omega_p^2}{\omega(\omega^2+\Gamma^2)}
+\end{eqnarray}
+onde $\omega_p = \sqrt{ne^2/m_e\epsilon_0}$ é a frequência de plasma. Utilizando os valores encontrados na literatura \cite{principle} para o ouro temos; $\omega_p=13,8 \times 10^{15}\,s^{-1}$ e $\Gamma = 1,075 \times 10^{14}\,s^{-1}$, com isso temos valores negativos para a parte real da constante dielétrica como mostra a fig.\ref{fig:cte_dieletrica} (a). A consequência direta disto é a penetração do campo elétrico $\vec{E}(\omega)$ no condutor, uma vez que o índice de refração é definido por $n=\sqrt{\epsilon}$, e $k=\frac{2\pi n}{\lambda}$, resultando em um vetor de onda $k$ imaginário definindo um campo que cai exponencialmente no condutor (ver cap. \ref{camposevanescente}). Essa parte do campo que penetra no condutor permite a interação com os elétrons livres resultando no plasmon de superfície. A parte imaginária de $\epsilon$ resulta no termo de dissipação da energia do campo.
+\begin{figure}[h]
+
+\centering
+\includegraphics[scale=0.5]{figuras/costante_dieletrica.eps}
+\caption{(a) Constante dielétrica segundo modelo de Drude-Sommerfeld tomando os valores de $\omega_p$ e $\Gamma$ da literatura (ver texto), note a diferença de escala entre a parte real $Re(\epsilon)$ e a parte imaginária $Im(\epsilon)$; (b) Modelo de intrabandas para a canstante dielétrica.  \cite{principle}}
+\label{fig:cte_dieletrica}
+\end{figure}
+
+Contudo, se o fótons incidente sobre a superfície de metal tiver energia suficiente para promover transições intrabandas, o modelo de Drude-Sommerfeld não descreve corretamente. Para tanto devemos acrescentar um potencial restaurador na equação \ref{eq_mov}.
+\begin{eqnarray}
+ m \frac{\partial^2\vec{r}}{\partial t^2} + m \, \gamma \, \frac{\partial\vec{r}}{\partial t} + \alpha \vec{r} = e \, \vec{E}_0 \, e^{-i \omega t}
+\end{eqnarray}
+
+Sendo $m$ a massa efetiva do elétron ligado, $\gamma$ o termo de viscosidade e $\alpha$ a constante de restauração de para o movimento do elétron. Seguindo os passos análogos ao modelo de Drude, podemos chegar a uma expressão para a constante dielétrica quando ocorre a promoção de elétrons de um estado ligado para a banda de condução. Assim, teremos 
+\begin{eqnarray}
+\epsilon_{intraband}(\omega) = 1+ \frac{\tilde{\omega}_p^2}{(\omega_0^2-\omega^2) - i\gamma \omega} \nonumber \\
+\epsilon_{intraband}(\omega) = 1+ \frac{\tilde{\omega}_p^2 (\omega_0^2-\omega^2)}{(\omega_0^2-\omega^2)^2 - \gamma^2 \omega^2} + i\frac{\tilde{\gamma \omega}_p^2 \omega}{(\omega_0^2-\omega^2)^2 - \gamma^2 \omega^2}
+\end{eqnarray}
+onde, $\tilde{\omega}_p = \sqrt{\tilde{n}e^2/m\epsilon_0}$ a frequência de plasma para os os elétrons ligados, $\tilde{n}$ a densidade de elétrons ligados e $\omega_0 = \sqrt{\alpha/m}$. 
+ 
+Este modelo demonstra claramente uma ressonância ilustrada pela parte imaginária da constante dielétrica $Im(\epsilon_{intraband})$ (fig. \ref{fig:cte_dieletrica} (b)) que para o ouro encontra-se próximo a $\lambda=450\,\,nm$. Porém, percebemos que a parte real $Re(\epsilon_{intraband})$ não é muito relevante frente ao efeito consequente das oscilações das cargas livres. De fato, este modelo não descreve bem os resultados experimentais para comprimentos de onda $\lambda < 500\,\,nm$, o que é de certa maneira esperado uma vez que este modelo considera apenas uma das possíveis transições eletrônicas. 
+
+
+\subsection{Construção de NP metálicas por desbaste eletroquímico}
+\paragraph*{}
+
+Apesar de utilizar o mesmo princípio, existem diversas técnicas de desbaste eletroquímico para a construção de NP metálicas. Essa variação deve-se aos diversos parâmetros que envolvem o processo de desbaste, bem como, os variados tipos de estruturas desejadas para as diferentes técnicas. Pequenas variações de parâmetros como a concentração ou a tensão aplicada entre eletrodos resultam em significantes transformações na estrutura final da ponteira, detalhes serão discutidos no cap. 3. Dependendo da técnica a qual se destina a ponteira, diferentes estruturas podem ser desejadas. Por exemplo, para microscopia óptica de emissão uma ponteira pouco rugosa e de menor diâmetro possível favorece a geração de efeitos ópticos, lineares ou não, bem como o ângulo de abertura do cone que forma a ponteira ou estruturas nanométricas periódicas (\textit{groves}) influenciam no acoplamento do campo incidente e na geração do plasmon de superfície \cite{boyle,zayats,principle}, efeito que resulta na amplificação do campo local como visto no capítulo anterior.
+
+Em geral, a técnica consiste em aplicar um potencial entre dois eletrodos, ambos imersos em uma solução eletrolítica, própria para cada tipo de metal (Au, W, Pt..), denominada \textbf{eletrólito}. A tensão aplicada entre os eletrodos promove o desbaste através da recombinação iônica do metal com o eletrólito, onde o anodo sofre a oxidação (desbaste) e o catodo a redução. Por estar imerso no eletrólito o metal sofre um processo de oxi-redução, no caso, acelerado pelo potencial aplicado \cite{oliveira}. O método mais comum consiste em emergir no eletrólito parte de um anel metálico, cerca de 2/3 da espessura do fio, e inserir no centro fio metálico que dará origem a NP, conforme ilustra a fig. \ref{fig:montagem_desbaste}. O potencial DC aplicado garante que o fio parmanece sendo o anodo, mesmo se utilizarmos o mesmo metal em ambos eletrodos. A parte imersa do fio deve estar recoberta com alguma substância inerte a reação do eletrólito, para que a oxidação do metal ocorra somente em uma pequena parte do fio. Como resultado o desbaste do anodo acontece radial ao eixo do fio e a NP se forma quando a parte inferior do fio se desprende. Neste instante é necessário interromper a corrente imediatamente, pois o menisco que se forma na superfície do líquido junto a NP, permanece oxidando o metal resultando em ponteiras mais rombudas.
+
+Diversos detalhes acerca desta técnica, denominada ``drop-off'' serão discutidos e acrescentados no cap. 3, onde apresentaremos discussões pormenorizadas sobre o desbaste eletroquímico juntamente com os resultados obtidos de sua aplicação. Por exemplo a utilização de uma corrente alternada para a obtenção de uma NP metálica com melhor qualidade óptica e as reações químicas que ocorrem no eletrólito e que resultam no desbaste do metal.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=1]{figuras/montagem_np.eps}
+\caption{Esquema que ilustra a montagem para o método ``drop-off'' \cite{boyle,picardi}, comumente usado em desbaste eletroquímico.}
+\label{fig:montagem_desbaste}
+\end{figure}
+
+\section{Efeitos não-lineares e Geração de Segundo Harmônico}
+\paragraph{}
+
+Quando um campo eletromagnético incide sobre um meio condutor uma polarização é induzida neste meio. A susceptibilidade elétrica $\chi_e$ representa a resposta eletrônica do meio. De uma maneira geral o campo aplicado $\vec{E}$ pode alterar o potencial ao qual o elétron está submetido na rede, caso tenha amplitude suficiente. Para baixas amplitudes do campo incidente a resposta do meio é linear , conforme expressa na equação \ref{pol_linear}. Como a GSH depende da resposta eletrônica do meio, o sinal de segundo harmônico gerado em NP metálicas depende fortemente da orientação da polarização do campo incidente em relação ao eixo da NP \cite{zayats,principle,bouhelier,novotny,takahashi}, detalhes sobre esta dependência serão discutidos no decorrer deste trabalho. 
+
+Contudo, se o campo aplicado for suficientemente intenso a o meio responde de maneira não-linear, ou seja, fenômenos ópticos que dependem do quadrado da amplitude do campo elétrico são observados. Neste caso, podemos considerar uma expansão perturbativa para o campo elétrico assumindo que a resposta não-linear ainda é muito pequena frente a resposta linear do meio \cite{boyd}. Esta consideração somente é válida dentro do limite em que o campo aplicado é menor que o campo atômico interno que atua sobre o elétron, ou seja, $\vec{E} << \vec{E}_{at}=\frac{e}{a_0^2}$, onde $e$ é a carga do elétron e $a_0$ o raio de Bohr. Alguns lasers de alta potência são capazes de produzir campos da ordem do campo atômico $\vec{E}_{at}$, sendo assim a expansão perturbativa não é mais correta uma vez que o potencial ao qual o elétron é submetido é alterado pelo campo aplicado, podendo causar fotoionização do meio.
+
+Nas condições em que a expansão perturbativa do campo elétrico é válida, podemos reescrever a polarização macroscópica do meio como
+\begin{eqnarray}
+ \vec{P}&=&\chi^{(1)}\vec{E}+\chi^{(2)}\vec{E}\vec{E}+\chi^{(3)}\vec{E}\vec{E}\vec{E}+\cdots \nonumber \\
+ &\equiv&\vec{P}^{(1)}+\vec{P}^{(2)}+\vec{P}^{(3)}+\cdots
+\label{expansao_nl}
+\end{eqnarray}
+sendo $\chi^{(2)}$ a susceptibilidade de segunda ordem, $\chi^{(3)}$ a susceptibilidade de terceira ordem e assim consequentemente. Como consequência dos produtos vetoriais que seguem, $\chi^{(2)}$ é um tensor de segunda ordem, $\chi^{(3)}$ um tensor de terceira ordem e assim por diante.
+
+A susceptibilidade representa as propriedades eletrônicas e estruturais do meio. A um material cujo potencial ao qual o elétron é submetido é simétrico em relação a uma origem, denominamos \textbf{centrosimétrico} (fig. \ref{fig:potencial} (a)). Para esse tipo de meio a susceptibilidade deve ser invariante frente a operação de inversão espacial, ou seja, a seginte condição deve ser satisfeita
+\begin{eqnarray}
+ \chi(\vec{r}) = \chi(-\vec{r}) .
+\label{inversao_chi}
+\end{eqnarray}
+ No caso em que o material é centrossimétrico e a polarização induzida responde instantaneamente ao campo aplicado dizemos que o material possui \textbf{inversão de simetria}. Ao incidirmos um campo oscilante no tempo $\vec{E}(t)=\vec{E}_0 \cos{\omega t}$ em um meio com inversão de simetria a polarização $\vec{P}(t)$ deve acompanhar a troca de sinal do campo elétrico, assim, como $\vec{E}(t=\frac{\pi}{\omega})=-\vec{E}(t)$ a seguinte relação dever ser satisfeita para polarização em todas as ordens
+\begin{eqnarray}
+ \vec{P}(t=\frac{\pi}{\omega})^{(n)}=-\vec{P}(t)^{(n)}\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,n=0,1,2,3,\cdots
+\label{inversao_simetria}
+\end{eqnarray}
+No entanto, para as polarizações com ordens pares, segundo a relação definida na eq. \ref{expansao_nl}, isto não ocorre
+\begin{eqnarray}
+ \vec{P}(t=\frac{\pi}{\omega})^{(2n)}=\chi^{(2n)}[-\vec{E}(t)]^{(2n)}=\vec{P}(t)^{(2n)}
+\end{eqnarray}
+com isso, a eq. \ref{inversao_simetria} somente é satisfeita em todas as ordens de polarização independentemente, se
+\begin{eqnarray}
+ \chi^{(2n)} = 0.
+\end{eqnarray}
+Logo, as polarizações induzidas de ordem par são identicamente nulas em materias que apresentam simetria de inversão, $\vec{P}^{(2n)}=0$, e somente podemos observar efeitos não-lineares de ordem par em materias \textbf{sem simetria de inversão} cujo o potencial é \textbf{assimétrico} (fig. \ref{fig:potencial} (b)) onde a condição de inversão \ref{inversao_simetria} não é necessariamente satisfeita.
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.6]{figuras/potencial.eps}
+\caption{(a) Potencial centrosimétrico e (b) potencial assimétrico, ambos representados unidimensionalmente. \cite{boyd}}
+\label{fig:potencial}
+\end{figure}
+
+As diversas ordens de polarização definidas na eq. \ref{expansao_nl} vão dar origem a diversos efeitos ópticos não-lineares, entre eles a geração de segundo harmônico (GSH), geração de soma e diferença frequências, absorção de dois fótons, oscilações paramétricas e geração de terceiro harmônico entre outros. No entanto, neste trabalho vomos focar na descrição dos efeitos gerados pela polarização de segunda ordem $\vec{P}^{(2)}$, mais precisamente a GSH.Como a teoria aplicada na expansão da polarização induzida é perturbativa, temos que a intensidade decresce rapidamente com a ordem do efeito, sendo assim temos a polarização de segunda ordem como a contribuição não-linear mais significativa se o meio não apresentar simetria de inversão \cite{boyd}.
+
+A assimetria necessária para a GSH é encontrada em moléculas não-centrossimétricas as quais a geometria favorece a assimetria do potencial. Porém, basta a interface entre dois meios distintos para que a condição de inversão \ref{inversao_simetria} não seja satisfeita localmente, permitindo assim a geração de efeitos não-lineares como a GSH. Vamos considerar um campo que propaga em um meio não-linear com susceptibilidade de segunda ordem $\chi^{(2)}$ não nula com frequência angular $\omega$ 
+\begin{eqnarray}
+ \vec{E}(t)=\vec{E}e^{-i\omega t}+\,c.c.
+\label{campo_E}
+\end{eqnarray}
+onde $c.c.$ representa o complexo conjugado do termo anterior. A polarização de segunda ordem de acordo com a eq. \ref{expansao_nl} fica definida por $\vec{P}^{(2)}(t)=\chi^{(2)}\,[\vec{E}(t)]^2$, assim
+\begin{eqnarray}
+ \vec{P}^{(2)}(t)=2\chi^{(2)}\vec{E}\vec{E}^{*}+(\,\chi^{(2)}\vec{E}^2\,e^{-i\,2\omega\,t}+\,c.c.)\,\,.
+\label{2omega}
+\end{eqnarray}
+
+Analizando equação acima vemos que o primeiro termo dá origem a um campo estático que não configura um campo eletromagnético pois a derivada segunda no tempo, presente na equação de onda, deste termo é nula \cite{boyd}. Os termos restantes na eq. \ref{2omega} originam um campo eletromagnético que oscila com frequência $2\omega$, ou seja com o dobro da energia incidente (\ref{campo_E}), dando origem a GSH. Um exemplo típico da utilização deste efeito é encontrada no laser de Nd:YAG que fundamentalmente opera em $\lambda=1060\,nm$ e que rotineiramente converte a frequência fundamental $\omega$ em $2\omega$ para obter uma emissão em $\lambda=530\,nm$ no centro do espectro visível.
+
+O processo de GSH pode ser interpretado como um processo quântico de aniquilação e criação de fótons, assim, dois fótons incidentes com frequência $\omega$ são aniquilados e dão origem a um único fóton com frequência $2\omega$ \cite{boyd,zayats}. Por conservação de momento, o fóton criado propaga na mesma direção e sentido da radiação incidente, conforme ilustra a fig. \ref{fig:shg} (a). O diagrama da fig. \ref{fig:shg} (b) representa a troca de energia no processo de GSH, a linha inferior contínua representa o \textbf{estado fundamental} do átomo enquanto as linhas pontilhadas representam os \textbf{estados virtuais} de energia. Estes últimos, não configuram um autoestado de energia do átomo livre, mas sim uma combinação de um autoestado com a energia de um ou mais fótons incidentes. Sendo assim, o estado virtual não é estável, resultando em um processo simultâneo de combinação dois fótons para a GSH.
+
+\begin{figure}[h]
+\centering 
+\includegraphics[scale=0.6]{figuras/shg.eps}
+\caption{(a) Direção de propagação do sinal de $2\omega$ e (b) diagrama de níveis de energia para a GSH. \cite{boyd}}
+\label{fig:shg}
+\end{figure}
