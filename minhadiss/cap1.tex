@@ -154,7 +154,7 @@ O que reduz a equação \eqref{eq:Wmunu} à
     W_{\mu\lambda} (Q^2, \nu) =\qty (-g_{\mu\lambda} + q_\mu q_\lambda)W_ 1(Q^2,\nu) + \frac{1}{M^2} \qty(p_\mu - \frac{p\cdot q }{q^2}q_ \mu)\qty(p_\lambda - \frac{p\cdot q }{q^2}q_ \lambda) W_2(Q^2, \nu)
     \label{eq:funcaoestrutura}
 \end{equation}
-onde $W_1$ e $W_2$ são as funções de estrutura do elétron-núcleon. Aplicando \eqref{eq:funcaoestrutura} à expressão da seção de choque \eqref{eq:secaoWL} obtemos:
+onde $W_1$ e $W_2$ são as funções de estrutura do elétron-núcleon~\cite{halzen_quarks_1984}. Aplicando \eqref{eq:funcaoestrutura} à expressão da seção de choque \eqref{eq:secaoWL} obtemos:
 \begin{equation}
     \dv[2]{\sigma}{Q^2 \nu} = \frac{4\pi \alpha^2}{Q^4} \frac{E'}{E}\qty[2sen^2\frac{\theta}{2} W_1(Q^2) + cos^2\frac{\theta}{2}W_ 2 (Q^2,\mu)]
     \label{eq:crosssectiondis}
@@ -200,7 +200,8 @@ Na situação do limite de Bjorken, onde \( Q^2 \rightarrow \infty \) e \( \nu \
 \begin{equation}
     \nu W_2(x, Q^2) \rightarrow F_2(x_B).
 \end{equation}
-Também é possível fazer a suposição de que o fóton está interagindo apenas com um párton, evidenciando a natureza pontual dos quarks e glúons e nos dando a possibilidade de descrever o processo pelo diagrama na Fig.~\ref{fig:disparton}, enquanto ignoramos diagramas mais complexos. O diagrama pode ser dividido em duas partes. A primeira parte corresponde ao espalhamento de um elétron e um párton, com uma fração de momento \( x \), através  de uma interação de fóton virtual, que pode ser calculada a partir da  QCD perturbativa e também através da QED. A segunda se refere ao comportamento do párton dentro do hádron, sendo expressa através das Funções de Distribuição de Pártons não polarizadas e polarizadas (PDFs, \( f_i(x) \) e \( g(x) \)), de forma que  $f_i(\xi) d\xi$ é a probabilidade de um $i$-ésimo ser encontrado com uma fração de momento entre $\xi$ e $\xi + d\xi$. Dessa forma, a seção de choque para o subprocesso partônico, considerando uma ordem arbitrária de pertubação, é representada por $d\hat{\sigma}_i$  e a seção de choque obedece à convolução:
+Também é possível fazer a suposição de que o fóton está interagindo apenas com um párton \cite{bjorken_asymptotic_1969}, 
+ evidenciando a natureza pontual dos quarks e glúons e nos dando a possibilidade de descrever o processo pelo diagrama na Fig.~\ref{fig:disparton}, enquanto ignoramos diagramas mais complexos. O diagrama pode ser dividido em duas partes. A primeira parte corresponde ao espalhamento de um elétron e um párton, com uma fração de momento \( x \), através  de uma interação de fóton virtual, que pode ser calculada a partir da  QCD perturbativa e também através da QED. A segunda se refere ao comportamento do párton dentro do hádron, sendo expressa através das Funções de Distribuição de Pártons não polarizadas e polarizadas (PDFs, \( f_i(x) \) e \( g(x) \)), de forma que  $f_i(\xi) d\xi$ é a probabilidade de um $i$-ésimo ser encontrado com uma fração de momento entre $\xi$ e $\xi + d\xi$. Dessa forma, a seção de choque para o subprocesso partônico, considerando uma ordem arbitrária de pertubação, é representada por $d\hat{\sigma}_i$  e a seção de choque obedece à convolução:
 \begin{equation}
     \frac{d\sigma}{dxdQ^2}  = \sum_i \int^{1}_{0} d\xi f_i(\xi) \frac{d\hat{\sigma}_i}{dxdQ^2}
 \end{equation}
@@ -276,7 +277,7 @@ onde $F_T$ e $F_L$ são a funções de estrutura transversal e longitudinal, res
 \end{equation}
 \subsubsection{DGLAP}
 
-\begin{figure}[h!]
+\begin{figure}[!ht]
     \centering
     \begin{tikzpicture}
         \begin{feynman}

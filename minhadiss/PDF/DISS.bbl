@@ -1,10 +1,21 @@
 \begin{thebibliography}{1}
 
+\bibitem{bjorken_asymptotic_1969}
+J.~D. Bjorken.
+\newblock Asymptotic {Sum} {Rules} at {Infinite} {Momentum}.
+\newblock {\em Physical Review}, 179(5):1547--1553, March 1969.
+\newblock Publisher: American Physical Society.
+
 \bibitem{griffiths_introduction_2008}
 David Griffiths.
 \newblock {\em Introduction to {Elementary} {Particles}}.
 \newblock John Wiley \& Sons, September 2008.
 \newblock Google-Books-ID: Wb9DYrjcoKAC.
+
+\bibitem{halzen_quarks_1984}
+Francis Halzen, Halzen, and Martin.
+\newblock {\em Quarks and {Leptones}: {An} {Introductory} {Course} in {Modern} {Particle} {Physics}}.
+\newblock Wiley, New York, 1ª edição edition, January 1984.
 
 \bibitem{rutherford}
 E.~Rutherford.
